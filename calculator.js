@@ -1,43 +1,31 @@
-function sum(a, b) {
-  return a + b;
-}
+var a = document.getElementById("num1");
+var b = document.getElementById("num2");
+var res = document.getElementById("result");
 
-function subtract(a, b) {
-  return a - b;
-}
+function calc(op){
+    var x = parseFloat(a.value);
+    var y = parseFloat(b.value);
+    var r;
 
-function multiply(a, b) {
-  return a * b;
-}
+    if(op == "+"){
+        r = x + y;
+    } else {
+        if(op == "-"){
+            r = x - y;
+        } else {
+            if(op == "*"){
+                r = x * y;
+            } else {
+                if(op == "/"){
+                    if(y == 0){
+                        r = "No dividir por 0"
+                    } else {
+                        r = x / y;
+                    }
+                }
+            }
+        }
+    }
 
-function divide(a, b) {
-  if (b === 0) {
-    return 'Error: División por cero';
-  }
-  return a / b;
-}
-
-function operate(operation) {
-  const num1 = parseFloat(document.getElementById("num1").value);
-  const num2 = parseFloat(document.getElementById("num2").value);
-  let result;
-
-  switch (operation) {
-    case 'sum':
-      result = sum(num1, num2);
-      break;
-    case 'subtract':
-      result = subtract(num1, num2);
-      break;
-    case 'multiply':
-      result = multiply(num1, num2);
-      break;
-    case 'divide':
-      result = divide(num1, num2);
-      break;
-    default:
-      result = 'Operación no válida';
-  }
-
-  document.getElementById("result").innerText = `Resultado: ${result}`;
+    res.innerHTML = "Resultado:" + r;
 }
